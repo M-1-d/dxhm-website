@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>招生信息 - 东喜玛拉雅研究院</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background: #2c5f2d;
+            color: white;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 15px 0;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 20px 15px;
+            display: block;
+            transition: background 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+
+        .section-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .section-title {
+            color: #2c5f2d;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: #2c5f2d;
+            border-radius: 2px;
+        }
+
+        .info-box {
+            background: #e8f5e9;
+            border-left: 4px solid #2c5f2d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-box h3 {
+            color: #2c5f2d;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: #1a3a1b;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #81c784;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">东喜玛拉雅研究院</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="team.html">科研团队</a></li>
+                <li><a href="admission.html">招生信息</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="section-header">
+                <h2 class="section-title">招生信息</h2>
+            </div>
+            
+            <div class="info-box">
+                <h3>硕士研究生招生</h3>
+                <p><strong>招生专业：</strong>生态学、环境科学</p>
+                <p><strong>研究方向：</strong>流域生态学、保护生物学、民族生态学</p>
+                <p><strong>联系方式：</strong>info@eastern-himalaya.cn</p>
+            </div>
+
+            <div class="info-box">
+                <h3>博士研究生招生</h3>
+                <p><strong>招生专业：</strong>生态学</p>
+                <p><strong>研究方向：</strong>高原湖泊生态学、生物多样性保护</p>
+                <p><strong>导师团队：</strong>肖文研究员、谭坤博士等</p>
+            </div>
+
+            <div class="info-box">
+                <h3>实践创新群（本科生）</h3>
+                <p>欢迎大理大学本科生加入实践创新群，参与科研项目和野外考察。</p>
+                <p><strong>招募对象：</strong>全校本科生</p>
+                <p><strong>活动内容：</strong>苍山十八溪调查、雾霾监测、鸟类研究等</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>联系我们</h3>
+                <p>地址：云南省大理市大理大学古城校区</p>
+                <p>邮编：671003</p>
+                <p>邮箱：info@eastern-himalaya.cn</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 东喜玛拉雅研究院 版权所有</p>
+        </div>
+    </footer>
+
+</body>
+</html>
