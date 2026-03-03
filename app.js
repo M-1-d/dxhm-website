@@ -31,7 +31,7 @@ function renderNewsList() {
             <div class="news-meta">${item.date}</div>
             <p class="news-excerpt">${escapeHtml(item.excerpt)}</p>
             <a href="#" class="read-more" onclick="event.stopPropagation(); showDetail(${item.id})">
-                阅读更多
+                阅读更多 →
             </a>
         </article>
     `).join('');
@@ -41,13 +41,17 @@ function renderNewsList() {
 function filterByCategory(category) {
     currentCategory = category;
     
-    // 更新侧边栏激活状态
-    document.querySelectorAll('.category-list a').forEach(link => {
+    // 更新顶部导航激活状态
+    document.querySelectorAll('.nav-menu a').forEach(link => {
         link.classList.remove('active');
-        if(link.dataset.category === category) {
-            link.classList.add('active');
-        }
     });
+    
+    // 找到对应的导航项并激活
+    const navItems = document.querySelectorAll('.nav-menu a');
+    const categoryIndex = ['all', 'news', 'research', 'academic', 'field', 'practice'].indexOf(category);
+    if (navItems[categoryIndex]) {
+        navItems[categoryIndex].classList.add('active');
+    }
 
     // 更新标题
     document.getElementById('listTitle').textContent = categoryMap[category] || '全部资讯';
@@ -95,6 +99,11 @@ function showDetail(id) {
     document.getElementById('detailView').classList.remove('hidden');
     document.getElementById('aboutView').classList.add('hidden');
     
+    // 清除导航激活状态
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.classList.remove('active');
+    });
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -108,8 +117,22 @@ function showList() {
 
 // 显示首页
 function showHome() {
-    filterByCategory('all');
+    currentCategory = 'all';
+    
+    // 更新导航激活状态
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.classList.remove('active');
+    });
+    document.querySelectorAll('.nav-menu a')[0].classList.add('active');
+    
+    document.getElementById('listTitle').textContent = '全部资讯';
+    document.getElementById('listView').classList.remove('hidden');
+    document.getElementById('detailView').classList.add('hidden');
+    document.getElementById('aboutView').classList.add('hidden');
+    
+    renderNewsList();
     document.getElementById('navMenu').classList.remove('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // 显示关于我们
@@ -117,6 +140,13 @@ function showAbout() {
     document.getElementById('listView').classList.add('hidden');
     document.getElementById('detailView').classList.add('hidden');
     document.getElementById('aboutView').classList.remove('hidden');
+    
+    // 更新导航激活状态
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.classList.remove('active');
+    });
+    document.querySelectorAll('.nav-menu a')[6].classList.add('active');
+    
     document.getElementById('navMenu').classList.remove('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
