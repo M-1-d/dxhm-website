@@ -18,36 +18,33 @@
         .main-container{max-width:1200px;margin:0 auto;padding:20px}
         .card{background:white;border-radius:8px;padding:25px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
         .card-title{color:#2c5f2d;font-size:1.3rem;margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid #2c5f2d}
-        .news-item{padding:15px 0;border-bottom:1px solid #eee;cursor:pointer;display:flex;gap:15px}
+        .news-item{padding:15px 0;border-bottom:1px solid #eee;cursor:pointer}
         .news-item:hover{background:#f9f9f9}
-        .news-date{background:#2c5f2d;color:white;padding:5px 10px;border-radius:4px;text-align:center;min-width:50px}
-        .news-title{flex:1;color:#333}
+        .news-title{font-size:1.1rem;color:#333;margin-bottom:5px}
         .news-meta{color:#999;font-size:0.85rem}
         .tag{display:inline-block;background:#e8f5e9;color:#2c5f2d;padding:2px 8px;border-radius:4px;font-size:0.75rem;margin-left:10px}
         .btn{display:inline-block;background:#2c5f2d;color:white;padding:10px 20px;border-radius:4px;text-decoration:none;margin:5px;cursor:pointer}
-        .btn:hover{background:#1a3a1b}
-        .back-btn{background:#f5f5f5;color:#333;border:none;padding:10px 20px;border-radius:4px;cursor:pointer;margin-bottom:15px}
+        .back-btn{background:#f5f5f5;border:none;padding:10px 20px;border-radius:4px;cursor:pointer;margin-bottom:15px}
         .footer{background:#1a3a1b;color:white;padding:30px 20px;margin-top:30px;text-align:center}
-        .footer p{color:#ccc;margin:5px 0}
-        .view{display:none}
-        .view.active{display:block}
+        .view{display:none}.view.active{display:block}
+        @media(max-width:768px){.nav-menu{flex-wrap:wrap}.nav-menu a{padding:10px 15px;font-size:0.85rem}}
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-top">
             <div class="logo">东喜玛拉雅研究院</div>
-            <div class="logo-sub">Eastern Himalaya Research Institute</div>
+            <div class="logo-sub">Eastern Himalaya Research Institute, Dali University</div>
         </div>
         <div class="nav-container">
             <ul class="nav-menu">
                 <li><a onclick="showView('home')" id="nav-home" class="active">首页</a></li>
-                <li><a onclick="showCategory('news')" id="nav-news">新闻热点</a></li>
-                <li><a onclick="showCategory('research')" id="nav-research">研究成果</a></li>
-                <li><a onclick="showCategory('academic')" id="nav-academic">学术动态</a></li>
-                <li><a onclick="showCategory('field')" id="nav-field">野外考察</a></li>
-                <li><a onclick="showCategory('practice')" id="nav-practice">实创风采</a></li>
-                <li><a onclick="showView('about')" id="nav-about">关于我们</a></li>
+                <li><a onclick="showCategory('news')" id="nav-news">新闻</a></li>
+                <li><a onclick="showCategory('research')" id="nav-research">研究</a></li>
+                <li><a onclick="showCategory('academic')" id="nav-academic">学术</a></li>
+                <li><a onclick="showCategory('field')" id="nav-field">考察</a></li>
+                <li><a onclick="showCategory('practice')" id="nav-practice">实创</a></li>
+                <li><a onclick="showView('about')" id="nav-about">关于</a></li>
             </ul>
         </div>
     </header>
@@ -56,39 +53,31 @@
         <!-- 首页 -->
         <div id="view-home" class="view active">
             <div class="card">
-                <div class="card-title">🔥 焦点新闻</div>
-                <div id="featured-news"></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">📂 研究领域</div>
-                <div>
-                    <span class="btn" onclick="showCategory('news')">📰 新闻热点</span>
-                    <span class="btn" onclick="showCategory('research')">🔬 研究成果</span>
-                    <span class="btn" onclick="showCategory('academic')">📚 学术动态</span>
-                    <span class="btn" onclick="showCategory('field')">🏔️ 野外考察</span>
-                    <span class="btn" onclick="showCategory('practice')">🎓 实创风采</span>
-                </div>
-            </div>
-            
-            <div class="card">
                 <div class="card-title">📰 最新动态</div>
-                <div id="latest-news"></div>
+                <div id="home-news-list">加载中...</div>
             </div>
-            
+            <div class="card">
+                <div class="card-title">📂 快速导航</div>
+                <span class="btn" onclick="showCategory('news')">新闻热点</span>
+                <span class="btn" onclick="showCategory('research')">研究成果</span>
+                <span class="btn" onclick="showCategory('academic')">学术动态</span>
+                <span class="btn" onclick="showCategory('field')">野外考察</span>
+                <span class="btn" onclick="showCategory('practice')">实创风采</span>
+            </div>
             <div class="card">
                 <div class="card-title">🏛️ 研究院简介</div>
                 <p>东喜玛拉雅研究院是大理大学下属的科研机构，致力于青藏高原东缘及横断山区生物多样性保护与生态系统研究。</p>
-                <p style="margin-top:10px"><strong>地址：</strong>云南省大理市大理大学古城校区 | <strong>邮编：</strong>671003 | <strong>邮箱：</strong>info@eastern-himalaya.cn</p>
+                <p style="margin-top:10px"><strong>地址：</strong>云南省大理市大理大学古城校区<br>
+                <strong>邮编：</strong>671003 | <strong>邮箱：</strong>info@eastern-himalaya.cn</p>
             </div>
         </div>
         
         <!-- 列表页 -->
         <div id="view-list" class="view">
             <div class="card">
-                <button class="back-btn" onclick="showView('home')">← 返回首页</button>
+                <button class="back-btn" onclick="showView('home')">← 返回</button>
                 <div class="card-title" id="list-title">全部资讯</div>
-                <div id="list-content"></div>
+                <div id="list-content">加载中...</div>
             </div>
         </div>
         
@@ -96,18 +85,20 @@
         <div id="view-detail" class="view">
             <div class="card">
                 <button class="back-btn" onclick="goBack()">← 返回</button>
-                <div id="detail-content"></div>
+                <div id="detail-content">加载中...</div>
             </div>
         </div>
         
         <!-- 关于我们 -->
         <div id="view-about" class="view">
             <div class="card">
+                <button class="back-btn" onclick="showView('home')">← 返回</button>
                 <div class="card-title">关于我们</div>
-                <p>东喜玛拉雅研究院依托大理大学交叉科学中心，整合生态学、地理学、民族学等多学科力量，开展流域生态学、保护生物学、民族生态学等领域的研究。</p>
-                <p style="margin-top:15px"><strong>地址：</strong>云南省大理市大理大学古城校区</p>
-                <p><strong>邮编：</strong>671003</p>
-                <p><strong>邮箱：</strong>info@eastern-himalaya.cn</p>
+                <p>东喜玛拉雅研究院依托大理大学交叉科学中心，整合生态学、地理学、民族学等多学科力量。</p>
+                <p style="margin-top:15px"><strong>联系方式</strong><br>
+                地址：云南省大理市大理大学古城校区<br>
+                邮编：671003<br>
+                邮箱：info@eastern-himalaya.cn</p>
             </div>
         </div>
     </div>
@@ -119,16 +110,80 @@
 
     <script src="data.js"></script>
     <script>
-        let currentCat='all',prevView='home';
-        document.addEventListener('DOMContentLoaded',function(){
-            const featured=articlesData[0];
-            document.getElementById('featured-news').innerHTML=`<div class="news-item" onclick="showDetail(${featured.id})"><div class="news-date">${featured.date.split('-')[1]}-${featured.date.split('-')[2]}</div><div><div class="news-title">${featured.title}</div><div class="news-meta">${featured.categoryName}<span class="tag">${featured.categoryName}</span></div></div></div>`;
-            document.getElementById('latest-news').innerHTML=articlesData.slice(0,5).map(item=>`<div class="news-item" onclick="showDetail(${item.id})"><div class="news-date">${item.date.split('-')[1]}-${item.date.split('-')[2]}</div><div><div class="news-title">${item.title}</div><div class="news-meta">${item.date} | ${item.categoryName}</div></div></div>`).join('');
-        });
-        function showView(v){document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));document.getElementById('view-'+v).classList.add('active');document.querySelectorAll('.nav-menu a').forEach(a=>a.classList.remove('active'));if(v==='home')document.getElementById('nav-home').classList.add('active');if(v==='about')document.getElementById('nav-about').classList.add('active');prevView=v}
-        function showCategory(cat){currentCat=cat;document.getElementById('list-title').textContent=cat==='all'?'全部资讯':categoryMap[cat];const filtered=cat==='all'?articlesData:articlesData.filter(i=>i.category===cat);document.getElementById('list-content').innerHTML=filtered.map(item=>`<div class="news-item" onclick="showDetail(${item.id})"><div class="news-date">${item.date.split('-')[1]}-${item.date.split('-')[2]}</div><div><div class="news-title">${item.title}</div><div class="news-meta">${item.date} | ${item.categoryName}</div></div></div>`).join('');showView('list');document.getElementById('nav-'+cat).classList.add('active')}
-        function showDetail(id){const item=articlesData.find(n=>n.id===id);if(!item)return;document.getElementById('detail-content').innerHTML=`<div style="color:#2c5f2d;font-size:0.9rem;margin-bottom:10px">${item.categoryName}</div><h1 style="font-size:1.5rem;margin-bottom:15px">${item.title}</h1><div style="color:#999;margin-bottom:20px">${item.date} | 来源：${item.author}</div><div style="line-height:1.8">${item.content}</div>`;showView('detail')}
-        function goBack(){currentCat==='all'?showView('home'):showCategory(currentCat)}
+        // 检查数据是否加载
+        if(typeof articlesData === 'undefined'){
+            document.body.innerHTML = '<div style="text-align:center;padding:50px"><h2>数据加载失败</h2><p>请检查 data.js 文件是否存在</p></div>';
+        }
+        
+        let currentCat = 'all';
+        
+        function showView(viewName){
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + viewName).classList.add('active');
+            
+            document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+            if(viewName === 'home') document.getElementById('nav-home').classList.add('active');
+            if(viewName === 'about') document.getElementById('nav-about').classList.add('active');
+            
+            window.scrollTo(0, 0);
+        }
+        
+        function showCategory(cat){
+            currentCat = cat;
+            const title = cat === 'all' ? '全部资讯' : categoryMap[cat];
+            document.getElementById('list-title').textContent = title;
+            
+            const filtered = cat === 'all' ? articlesData : articlesData.filter(item => item.category === cat);
+            
+            let html = '';
+            filtered.forEach(item => {
+                html += '<div class="news-item" onclick="showDetail(' + item.id + ')">';
+                html += '<div class="news-title">' + item.title + '</div>';
+                html += '<div class="news-meta">' + item.date + ' | ' + item.categoryName + '<span class="tag">' + item.categoryName + '</span></div>';
+                html += '</div>';
+            });
+            
+            document.getElementById('list-content').innerHTML = html;
+            showView('list');
+            document.getElementById('nav-' + cat).classList.add('active');
+        }
+        
+        function showDetail(id){
+            const item = articlesData.find(n => n.id === id);
+            if(!item) return;
+            
+            let html = '';
+            html += '<div style="color:#2c5f2d;font-size:0.9rem;margin-bottom:10px">' + item.categoryName + '</div>';
+            html += '<h1 style="font-size:1.5rem;margin-bottom:15px">' + item.title + '</h1>';
+            html += '<div style="color:#999;margin-bottom:20px">' + item.date + ' | 来源：' + item.author + '</div>';
+            html += '<div style="line-height:1.8">' + item.content + '</div>';
+            
+            document.getElementById('detail-content').innerHTML = html;
+            showView('detail');
+        }
+        
+        function goBack(){
+            if(currentCat === 'all'){
+                showView('home');
+            } else {
+                showCategory(currentCat);
+            }
+        }
+        
+        // 初始化首页
+        function initHome(){
+            let html = '';
+            articlesData.slice(0, 5).forEach(item => {
+                html += '<div class="news-item" onclick="showDetail(' + item.id + ')">';
+                html += '<div class="news-title">' + item.title + '</div>';
+                html += '<div class="news-meta">' + item.date + ' | ' + item.categoryName + '</div>';
+                html += '</div>';
+            });
+            document.getElementById('home-news-list').innerHTML = html;
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', initHome);
     </script>
 </body>
 </html>
