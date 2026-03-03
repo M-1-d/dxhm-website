@@ -100,4 +100,55 @@ const categoryMap = {
     'field': '野外考察',
     'practice': '实创风采'
 };
+// 人员数据
+const teamData = [
+    {
+        id: 1,
+        name: '肖文 研究员',
+        title: '交叉科学中心主任',
+        photo: 'https://via.placeholder.com/300x400/2c5f2d/ffffff?text=肖文',
+        research: '流域生态学、保护生物学',
+        achievements: [
+            '主持国家自然科学基金重点项目',
+            '发表SCI论文50余篇',
+            '获省部级科技进步奖3项'
+        ]
+    },
+    {
+        id: 2,
+        name: '蔡庆华 研究员',
+        title: '中国科学院水生生物研究所',
+        photo: 'https://via.placeholder.com/300x400/4a8f4d/ffffff?text=蔡庆华',
+        research: '淡水生态学、流域生态学',
+        achievements: [
+            '中国科学院院士',
+            '主持国家973项目',
+            '发表SCI论文100余篇'
+        ]
+    },
+    {
+        id: 3,
+        name: '谭坤 博士',
+        title: '青年研究员',
+        photo: 'https://via.placeholder.com/300x400/6bbf6d/ffffff?text=谭坤',
+        research: '集合群落生态学',
+        achievements: [
+            '主持国家自然科学基金青年项目',
+            '发表SCI论文20余篇',
+            '获云南省自然科学奖1项'
+        ]
+    },
+    {
+        id: 4,
+        name: '李娜 博士',
+        title: '青年研究员',
+        photo: 'https://via.placeholder.com/300x400/8ccf8d/ffffff?text=李娜',
+        research: '景观生态学',
+        achievements: [
+            '主持国家自然科学基金青年项目',
+            '发表SCI论文15余篇',
+            '参与国家重点研发计划'
+        ]
+    }
+];
 
