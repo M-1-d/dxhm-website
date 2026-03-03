@@ -44,7 +44,8 @@
                 <li><a onclick="showCategory('academic')" id="nav-academic">学术</a></li>
                 <li><a onclick="showCategory('field')" id="nav-field">考察</a></li>
                 <li><a onclick="showCategory('practice')" id="nav-practice">实创</a></li>
-                <li><a onclick="showView('about')" id="nav-about">关于</a></li>
+                <li><a onclick="showView('team')" id="nav-team">人员</a></li>
+<li><a onclick="showView('about')" id="nav-about">关于</a></li>
             </ul>
         </div>
     </header>
@@ -88,7 +89,19 @@
                 <div id="detail-content">加载中...</div>
             </div>
         </div>
-        
+          <!-- 人员概况 -->
+        <div id="view-team" class="view">
+            <div class="card">
+                <button class="back-btn" onclick="showView('home')">← 返回</button>
+                <div class="card-title">👥 人员概况</div>
+                <p style="color:#666;margin-bottom:20px">汇聚优秀人才，推动生态保护研究</p>
+                
+                <div id="team-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+                    <!-- 人员卡片由JS生成 -->
+                </div>
+            </div>
+        </div>
+
         <!-- 关于我们 -->
         <div id="view-about" class="view">
             <div class="card">
@@ -110,6 +123,68 @@
 
     <script src="data.js"></script>
     <script>
+                // 人员数据（临时定义，如果data.js加载失败）
+        if(typeof teamData === 'undefined'){
+            var teamData = [
+                {
+                    id: 1,
+                    name: '肖文 研究员',
+                    title: '交叉科学中心主任',
+                    photo: 'https://via.placeholder.com/300x400/2c5f2d/ffffff?text=肖文',
+                    research: '流域生态学、保护生物学',
+                    achievements: ['主持国家自然科学基金重点项目', '发表SCI论文50余篇', '获省部级科技进步奖3项']
+                },
+                {
+                    id: 2,
+                    name: '蔡庆华 研究员',
+                    title: '中国科学院水生生物研究所',
+                    photo: 'https://via.placeholder.com/300x400/4a8f4d/ffffff?text=蔡庆华',
+                    research: '淡水生态学、流域生态学',
+                    achievements: ['中国科学院院士', '主持国家973项目', '发表SCI论文100余篇']
+                },
+                {
+                    id: 3,
+                    name: '谭坤 博士',
+                    title: '青年研究员',
+                    photo: 'https://via.placeholder.com/300x400/6bbf6d/ffffff?text=谭坤',
+                    research: '集合群落生态学',
+                    achievements: ['主持国家自然科学基金青年项目', '发表SCI论文20余篇', '获云南省自然科学奖1项']
+                },
+                {
+                    id: 4,
+                    name: '李娜 博士',
+                    title: '青年研究员',
+                    photo: 'https://via.placeholder.com/300x400/8ccf8d/ffffff?text=李娜',
+                    research: '景观生态学',
+                    achievements: ['主持国家自然科学基金青年项目', '发表SCI论文15余篇', '参与国家重点研发计划']
+                }
+            ];
+        }
+        
+        // 显示人员概况
+        function showTeam(){
+            var list = document.getElementById('team-list');
+            if(!list) return;
+            
+            var html = '';
+            for(var i=0; i<teamData.length; i++){
+                var p = teamData[i];
+                html += '<div style="background:#f9f9f9;border-radius:8px;padding:20px;text-align:center;">';
+                html += '<img src="' + p.photo + '" style="width:150px;height:200px;object-fit:cover;border-radius:8px;margin-bottom:15px;">';
+                html += '<h3 style="color:#2c5f2d;margin-bottom:5px;">' + p.name + '</h3>';
+                html += '<p style="color:#666;font-size:0.9rem;margin-bottom:10px;">' + p.title + '</p>';
+                html += '<p style="color:#999;font-size:0.85rem;margin-bottom:10px;">研究方向：' + p.research + '</p>';
+                html += '<div style="text-align:left;background:white;padding:10px;border-radius:4px;">';
+                html += '<p style="font-size:0.8rem;color:#666;"><strong>主要成果：</strong></p>';
+                html += '<ul style="font-size:0.8rem;color:#666;padding-left:20px;">';
+                for(var j=0; j<p.achievements.length; j++){
+                    html += '<li>' + p.achievements[j] + '</li>';
+                }
+                html += '</ul></div></div>';
+            }
+            list.innerHTML = html;
+        }
+
         // 检查数据是否加载
         if(typeof articlesData === 'undefined'){
             document.body.innerHTML = '<div style="text-align:center;padding:50px"><h2>数据加载失败</h2><p>请检查 data.js 文件是否存在</p></div>';
@@ -117,16 +192,21 @@
         
         let currentCat = 'all';
         
-        function showView(viewName){
+                function showView(viewName){
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
             document.getElementById('view-' + viewName).classList.add('active');
             
             document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
             if(viewName === 'home') document.getElementById('nav-home').classList.add('active');
+            if(viewName === 'team') {
+                document.getElementById('nav-team').classList.add('active');
+                showTeam();
+            }
             if(viewName === 'about') document.getElementById('nav-about').classList.add('active');
             
             window.scrollTo(0, 0);
         }
+
         
         function showCategory(cat){
             currentCat = cat;
