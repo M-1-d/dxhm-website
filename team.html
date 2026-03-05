@@ -18,6 +18,7 @@
             background-color: #f8f9fa;
         }
 
+        /* 导航栏样式 - 与首页一致 */
         .navbar {
             background: #2c5f2d;
             color: white;
@@ -63,29 +64,58 @@
             background: rgba(255,255,255,0.15);
         }
 
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* 页面头部 */
+        .page-header {
+            background: linear-gradient(135deg, #2c5f2d 0%, #3d7a3e 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* 主内容区 */
         .main-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 40px 20px;
         }
 
-        .content-area {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            min-height: 600px;
+        .team-section {
+            margin-bottom: 40px;
         }
 
         .section-header {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid #2c5f2d;
         }
 
         .section-title {
             color: #2c5f2d;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -99,45 +129,126 @@
             border-radius: 2px;
         }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+        /* 人员卡片 - 左右布局 */
+        .team-vertical-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
-        .team-member {
-            background: #f8f9fa;
-            border-radius: 8px;
+        .team-vertical-card {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            background: white;
+            border-radius: 12px;
             padding: 25px;
-            text-align: center;
-            transition: all 0.3s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
             border: 1px solid #eee;
         }
 
-        .team-member:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        .team-vertical-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             transform: translateY(-3px);
         }
 
-        .team-member h3 {
+        /* 照片区域 - 保持原图比例 */
+        .team-image {
+            width: 280px;
+            min-width: 280px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .team-vertical-card:hover .team-image img {
+            transform: scale(1.02);
+        }
+
+        /* 信息区域 */
+        .team-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-info h3 {
             color: #2c5f2d;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .team-member .position {
-            color: #666;
-            font-size: 0.95rem;
+            font-size: 1.4rem;
             margin-bottom: 8px;
+            font-weight: 600;
         }
 
-        .team-member .research {
-            color: #888;
+        .position {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .expertise {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        /* 成果区域 */
+        .achievements {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: auto;
+        }
+
+        .achievements h4 {
+            color: #2c5f2d;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .achievements h4::before {
+            content: '▸';
+            color: #2c5f2d;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            color: #555;
             font-size: 0.9rem;
-            line-height: 1.5;
+            line-height: 1.7;
+            padding: 4px 0;
+            padding-left: 15px;
+            position: relative;
         }
 
+        .achievements li::before {
+            content: '•';
+            color: #2c5f2d;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* 页脚 - 简化版 */
         .footer {
             background: #1a3a1b;
             color: white;
@@ -169,72 +280,588 @@
             font-size: 0.9rem;
         }
 
+        /* 响应式设计 - 移动端适配 */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #2c5f2d;
+                flex-direction: column;
+                padding: 10px 0;
             }
-            
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
             .main-container {
-                padding: 15px;
+                padding: 20px 15px;
             }
-            
-            .content-area {
-                padding: 20px;
-            }
-            
-            .team-grid {
+
+            .team-vertical-card {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .team-image {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+                min-width: auto;
+            }
+
+            .team-info h3 {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .position {
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- 导航栏 - 与首页一致 -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo" onclick="window.location.href='index.html'">东喜玛拉雅研究院</div>
-            <ul class="nav-menu">
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">首页</a></li>
-                <li><a href="team.html">科研团队</a></li>
+                <li><a href="team.html" class="active">科研团队</a></li>
                 <li><a href="admission.html">招生信息</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="main-container">
-        <div class="content-area">
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <h1>科研团队</h1>
+            <p>汇聚优秀人才，推动生态保护研究</p>
+        </div>
+    </section>
+
+    <!-- 主内容区 -->
+    <main class="main-container">
+        <div class="team-section">
             <div class="section-header">
-                <h2 class="section-title">科研团队</h2>
+                <h2 class="section-title">研究团队</h2>
             </div>
             
-            <div class="team-grid">
-                <div class="team-member">
-                    <h3>肖文 研究员</h3>
-                    <p class="position">交叉科学中心主任</p>
-                    <p class="research">研究方向：流域生态学、保护生物学</p>
+            <div class="team-vertical-grid">
+                <!-- 人员模块 1: 肖文 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team1.jpg" alt="肖文">
+                    </div>
+                    <div class="team-info">
+                        <h3>肖文 创始院长</h3>
+                        <p class="position">博士 研究员</p>
+                        <p class="expertise">1999年硕士毕业于中科院水生生物研究所；2004年博士毕业于中科院昆明动物研究所，毕业后留所工作。2007年带领团队在大理大学创立了东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>中国三江并流区域生物多样性保护和利用云南省创新团队带头人</li>
+                                <li>云南省中青年学术技术带头人</li>
+                                <li>滇西北文化生态中心常务副主任</li>
+                                <li>中国生态学会流域生态学专业委员会副主任委员</li>
+                                <li>中国动物学会灵长类分会常务理事</li>
+                                <li>中国科学探险协会理事</li>
+                                <li>中国自然资源学会国家公园与自然保护地体系研究分会理事</li>
+                                <li>IUCN/SSC灵长类专家组成员</li>
+                                <li>迄今发表论文200篇以上，其中SCI论文100篇以上</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究目标</h4>
+                            <ul>
+                                <li>一直致力于在东喜玛拉雅构建流域生态系统的长期全要素监测体系，研究和多样性（环境、生物、人类共同体）的起源、演化和维持机制，探索生命共同体的可持续发展途径。</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="team-member">
-                    <h3>蔡庆华 研究员</h3>
-                    <p class="position">中国科学院水生生物研究所</p>
-                    <p class="research">研究方向：淡水生态学、流域生态学</p>
+
+                <!-- 人员模块 2: 杨晓燕 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team2.jpg" alt="杨晓燕">
+                    </div>
+                    <div class="team-info">
+                        <h3>杨晓燕 教授</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2006年博士毕业于四川农业大学动物医学专业。同年进入大理大学工作，2018年调入东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>发表科研论文70余篇，其中SCI论文32篇，C刊及北核21篇</li>
+                                <li>获批专利3项</li>
+                                <li>参编教材1本</li>
+                                <li>主持国家级自然科学基金3项</li>
+                                <li>主讲省双一流课程1门《微生物学》，获大理大学教学质量奖特等奖2次</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>微生物生态学</li>
+                                <li>火生态学</li>
+                                <li>抗氧化</li>
+                                <li>功能食品和药品研发</li>
+                                <li>真菌分类学</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="team-member">
-                    <h3>谭坤 博士</h3>
-                    <p class="position">青年研究员</p>
-                    <p class="research">研究方向：集合群落生态学</p>
+
+                <!-- 人员模块 3: 佘容 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team3.jpg" alt="佘容">
+                    </div>
+                    <div class="team-info">
+                        <h3>佘容 副研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2017年博士毕业于四川农业大学预防兽医学专业；2007年加入上市公司，从事质量检测工作；2018年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>发表论文31篇，其中第一作者或通讯作者SCI论文9篇，北大核心期刊论文8篇</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>微生物生态学，主要研究火干扰下微生物群落构建及其多样性维持机制</li>
+                                <li>微生物和植物资源利用与开发，主要进行特殊生境微生物及其活性物质的开发与利用研究</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="team-member">
-                    <h3>李娜 博士</h3>
-                    <p class="position">青年研究员</p>
-                    <p class="research">研究方向：景观生态学</p>
+
+                <!-- 人员模块 4: 杨旭 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team4.jpg" alt="杨旭">
+                    </div>
+                    <div class="team-info">
+                        <h3>杨旭 客座教授</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2001年博士毕业于华中科技大学。华中师范大学桂苑名师。2020年3月接受东喜玛拉雅研究院邀请，成为大理大学客座教授。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>现已发表科研论文658篇，其中131篇SCI论文</li>
+                                <li>获得发明专利10余项</li>
+                                <li>主编或参编学术专著16本</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>环境与健康</li>
+                                <li>分子毒理学</li>
+                                <li>环境生物学</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 5: 吕跃军 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team5.jpg" alt="吕跃军">
+                    </div>
+                    <div class="team-info">
+                        <h3>吕跃军 副研究员</h3>
+                        <p class="position">硕士</p>
+                        <p class="expertise">2002年中央党校经济管理专业研究生班毕业，2015年复旦大学社会发展与公共政策学院访问学者，2018年华中师范大学国家文化产业研究中心访问学者，2019年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>主持国家社科基金项目1项，教育部基金项目1项，云南省哲社规划项目1项，云南省省院省校合作项目1项</li>
+                                <li>出版专著2部</li>
+                                <li>发表论文40余篇</li>
+                                <li>中国民族医药学会远程教育分会常务理事</li>
+                                <li>云南省医学会医史学分会副主任委员</li>
+                                <li>大理州民族民间医药非物质文化遗产专业委员会主任委员</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>文化遗产保护与利用</li>
+                                <li>民族医药文化</li>
+                                <li>医学人文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 6: 李先福 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team6.jpg" alt="李先福">
+                    </div>
+                    <div class="team-info">
+                        <h3>李先福 副研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2016年博士毕业于华南农业大学农业昆虫与害虫防治专业;同年进入中国科学院水生生物研究所做博士后。2019年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>以第一或通讯作者发表论文13篇，其中SCI论文10篇，北大核心2篇</li>
+                                <li>获批发明专利1项</li>
+                                <li>主持国家基金1项</li>
+                                <li>主持横向及其它项目8项</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>水生生物行为生态学</li>
+                                <li>群落构建和维持机制</li>
+                                <li>流域生态学</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 7: 沐远 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team7.jpg" alt="沐远">
+                    </div>
+                    <div class="team-info">
+                        <h3>沐远 副研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2019年博士毕业于南京师范大学动物学专业，师从杨光教授，同年进入大理大学东喜玛拉雅研究院工作。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>主持国家自然科学基金、云南省科技厅面上项目等5项，总经费约80万元</li>
+                                <li>近3年发表SCI论文10余篇，其中一作或通讯9篇，一作北大核心1篇</li>
+                                <li>多个SCI期刊审稿人</li>
+                                <li>指导本科生获得国家级、省级大学生创新创业训练项目立项多项</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>脊椎动物适应性演化及多样性</li>
+                                <li>基于比较基因组学和进化基因组学手段，结合相关实验探究动物对环境的适应性进化机制</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 8: 黄志旁 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team8.jpg" alt="黄志旁">
+                    </div>
+                    <div class="team-info">
+                        <h3>黄志旁 研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2002-2009年本科和硕士毕业于西南林学院，2015年博士毕业于西北大学动物学专业。2010年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>云南省"万人计划"青年拔尖人才</li>
+                                <li>主持国家自然科学基金项目3项，承担横向项目10余项</li>
+                                <li>发表SCI论文30余篇</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>灵长类行为生态学与保护生物学：东喜玛拉雅地区灵长类调查监测、行为生态和保护规划等</li>
+                                <li>生物多样性与可持续发展：山地区复合生态系统综合监测和区域可持续发展研究</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 9: 李延鹏 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team9.jpg" alt="李延鹏">
+                    </div>
+                    <div class="team-info">
+                        <h3>李延鹏 研究实习员</h3>
+                        <p class="position">硕士</p>
+                        <p class="expertise">2014年硕士毕业于西南林业大学野生动植物保护与利用专业。同年进入大理大学东喜玛拉雅研究院，现为华中师范大学生物学专业在读博士。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>以第一或通讯作者发表论文13篇，其中SCI论文10篇，北大核心期刊论文2篇</li>
+                                <li>获批发明专利1项</li>
+                                <li>主持国家基金1项，横向及其它项目8项</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>灵长类行为学，通过灵长类动物的体质及繁殖行为探讨动物适应环境的机制与机理</li>
+                                <li>土壤生态学，基于土壤线虫探索区域的生物多样性格局及环境稳定性评价</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 10: 龚佑静 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team10.jpg" alt="龚佑静">
+                    </div>
+                    <div class="team-info">
+                        <h3>龚佑静 助理研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2010年博士毕业于南京农业大学农业昆虫与害虫防治专业。2012-2015年在中科院昆明植物研究所从事博士后研究。2019年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>以第一或通讯作者发表论文6篇，其中SCI论文3篇，北大核心1篇，普刊2篇</li>
+                                <li>获批发明专利2项</li>
+                                <li>主持横向项目2项</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>昆虫分类及生态学研究</li>
+                                <li>火烧迹地昆虫的群落演替及其多样性的维持机制</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 11: 李娜 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team11.jpg" alt="李娜">
+                    </div>
+                    <div class="team-info">
+                        <h3>李娜 助理研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2019年博士毕业于中国科学院动物研究所生态学专业。2019年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>代表性论文7篇，以第一或通讯作者SCI论文3篇，核心期刊论文2篇</li>
+                                <li>主持云南省科技厅基金1项</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究目标</h4>
+                            <ul>
+                                <li>生物多样性、环境多样性以及人类多样性的耦合关系</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 12: 王荣兴 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team12.jpg" alt="王荣兴">
+                    </div>
+                    <div class="team-info">
+                        <h3>王荣兴 副研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2016年博士毕业于中科院昆明动物研究所，动物学专业。2017年，入职大理大学。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>以第一或通讯作者发表论文21篇，其中SCI论文6篇，北大核心论文8篇</li>
+                                <li>参编图书3部</li>
+                                <li>主持项目18项</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>西南山地鸟类群落生态学与恢复生态学</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 13: 李德品 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team13.jpg" alt="李德品">
+                    </div>
+                    <div class="team-info">
+                        <h3>李德品 副教授</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2020年博士毕业于北京师范大学动物学专业。2008年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>研究方向</h4>
+                            <ul>
+                                <li>农田环境鸟类群落生态学及常见鸟类繁殖生态学研究，重点关注洱海周边农耕区鸟类群落构建及其影响因素，以及常见鸟类繁殖策略及其适应机制。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 14: 谭坤 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team14.jpg" alt="谭坤">
+                    </div>
+                    <div class="team-info">
+                        <h3>谭坤 助理研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2012年硕士毕业于中国科学院动物研究所生态学专业；2019年博士毕业于复旦大学生态学专业。同年入职大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>以第一或通讯作者发表论文11篇，其中SCI论文4篇，北大核心期刊论文4篇</li>
+                                <li>出版译作2部，参编图书2部</li>
+                                <li>主持国家自然科学基金1项，其它项目8项</li>
+                                <li>指导学生获大学生创新训练项目国家级立项1项，省级立项2项</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>流域生态学：以流域视角研究环境因子、微生物、鸟兽、人类文化等多样性格局，以及运动、物种交互作用等机制在其中的作用</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 15: 张淑霞 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team15.jpg" alt="张淑霞">
+                    </div>
+                    <div class="team-info">
+                        <h3>张淑霞 副院长</h3>
+                        <p class="position">博士 高级工程师</p>
+                        <p class="expertise">2006年博士毕业于中科院昆明动物研究所动物学专业，博士毕业后在云南省环境科学研究院工作；2014年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>已发表SCI论文2篇，中文核心期刊论文7篇</li>
+                                <li>参与2项国家自科基金项目</li>
+                                <li>指导学生获国家级大学生创新创业训练项目立项1项</li>
+                                <li>云南省"挑战杯"大中专学生课外科技节科技作品竞赛省级二等奖1项</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>鸟类分类学</li>
+                                <li>鸟类系统发育学</li>
+                                <li>湿地和森林鸟类生态与保护</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 16: 房以好 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team16.jpg" alt="房以好">
+                    </div>
+                    <div class="team-info">
+                        <h3>房以好 研究实习员</h3>
+                        <p class="position">硕士</p>
+                        <p class="expertise">2013年进入大理大学东喜玛拉雅研究院做科研助理。2020年硕士毕业于西南林业大学野生动植物保护与利用专业。2022年起在复旦大学攻读博士学位。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>以第一或通讯作者发表SCI论文3篇，核心期刊论文1篇</li>
+                                <li>主持省教育厅基金1项</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>山地红外相机应用方法</li>
+                                <li>鸟兽生物多样性分布格局研究：1）森林结构维持鸟兽多样性作用，2）基于3D视角的生物多样性海拔格局</li>
+                                <li>两栖爬行动物多样性与分类</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 17: 赵成法 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team17.jpg" alt="赵成法">
+                    </div>
+                    <div class="team-info">
+                        <h3>赵成法 助理研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2019年6月博士毕业于华南农业大学动物遗传育种与繁殖专业。2019年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>研究方向</h4>
+                            <ul>
+                                <li>农业文化遗产保护与研究</li>
+                                <li>高原特色农业产业发展及可持续化研究</li>
+                                <li>三江并流区域农业资源保护、开发及利用</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 18: 李晓康 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team18.jpg" alt="李晓康">
+                    </div>
+                    <div class="team-info">
+                        <h3>李晓康 科研助理</h3>
+                        <p class="position">学士</p>
+                        <p class="expertise">2017年本科毕业于山东大学，化学工程与工艺专业。2018年进入大理大学东喜玛拉雅研究院，负责研究院日常行政工作。2022年在大理大学攻读硕士学位。</p>
+                        <div class="achievements">
+                            <h4>研究方向</h4>
+                            <ul>
+                                <li>文化生态学</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 19: 张彩彩 -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team19.jpg" alt="张彩彩">
+                    </div>
+                    <div class="team-info">
+                        <h3>张彩彩 副研究员</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2018年博士毕业于中国科学院西双版纳热带植物园植物生态学专业。同年进入大理大学东喜玛拉雅研究院。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>主持国家级项目1项，省级项目1项</li>
+                                <li>以第一作者和通讯作者发表SCI论文3篇，北大核心3篇</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>植物群落多样性分布格局及其维持机制</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人员模块 20: Davide Fornacca -->
+                <div class="team-vertical-card">
+                    <div class="team-image">
+                        <img src="images/team20.jpg" alt="Davide Fornacca">
+                    </div>
+                    <div class="team-info">
+                        <h3>Davide Fornacca</h3>
+                        <p class="position">博士</p>
+                        <p class="expertise">2007年硕士毕业于瑞士日内瓦大学人文地理学专业。2021年博士毕业于日内瓦大学环境科学专业。2013年以来，作为合作研究人员在大理大学东喜玛拉雅研究院工作。</p>
+                        <div class="achievements">
+                            <h4>主要成果</h4>
+                            <ul>
+                                <li>迄今以第一或通讯作者发表SCI论文7篇</li>
+                            </ul>
+                            <h4 style="margin-top: 15px;">研究方向</h4>
+                            <ul>
+                                <li>自然灾害遥感</li>
+                                <li>地理信息系统建模</li>
+                                <li>生物多样性分布</li>
+                                <li>环境风险研究</li>
+                                <li>火生态模型</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
+    <!-- 页脚 - 简化版 -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-info">
@@ -245,6 +872,13 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // 移动端菜单切换
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
